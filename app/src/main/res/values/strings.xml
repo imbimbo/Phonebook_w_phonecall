@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tres</string>
+    <string-array name="categorias">
+        <item>University</item>
+        <item>Family</item>
+        <item>Work</item>
+    </string-array>
+</resources>
