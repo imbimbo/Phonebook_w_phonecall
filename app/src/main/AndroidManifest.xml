@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tres">
         <activity
-            android:name=".InsertFilme"
+            android:name=".InsertContato"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

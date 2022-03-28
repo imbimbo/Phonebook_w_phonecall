@@ -11,10 +11,9 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class App extends Application {
-    public static ArrayList<Filme> filmes = new ArrayList<Filme>();
+    public static ArrayList<Contato> filmes = new ArrayList<Contato>();
     public static Context ctx;
 
     @Override
@@ -41,7 +40,7 @@ public class App extends Application {
         return -1;
     }
 
-    public static ArrayList<Filme> CarregaLista() {
+    public static ArrayList<Contato> CarregaLista() {
         try {
             File dir = new File(ctx.getFilesDir(), "midir");
             if (!dir.exists()) {
@@ -49,13 +48,13 @@ public class App extends Application {
             }
             File fichin = new File(dir, "filmes.data");
             ObjectInputStream is = new ObjectInputStream(new FileInputStream(fichin));
-            ArrayList<Filme> filmes = (ArrayList<Filme>) is.readObject();
+            ArrayList<Contato> filmes = (ArrayList<Contato>) is.readObject();
             is.close();
             Toast.makeText(ctx, "List Loaded Successfully", Toast.LENGTH_LONG).show();
             return filmes;
 
         } catch (Exception e) {
-            ArrayList<Filme> filmes = new ArrayList<Filme>();
+            ArrayList<Contato> filmes = new ArrayList<Contato>();
             Toast.makeText(ctx, "Empty list", Toast.LENGTH_LONG).show();
             return filmes;
 
@@ -88,7 +87,7 @@ public class App extends Application {
                 filmes.get(i).titulo = titulo;
                 filmes.get(i).number = number;
                 filmes.get(i).categoria = categoria;
-                filmes.get(i).foto = Filme.fromBitmapToArray(bmp);
+                filmes.get(i).foto = Contato.fromBitmapToArray(bmp);
                 gravarLista();
                 Toast.makeText(ctx, "Register Saved", Toast.LENGTH_SHORT).show();
                 flag=true;

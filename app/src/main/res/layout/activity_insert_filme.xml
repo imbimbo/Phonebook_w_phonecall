@@ -6,7 +6,7 @@
     android:padding="22dp"
     android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".InsertFilme"
+    tools:context=".InsertContato"
     tools:ignore="ExtraText">
 
     <TextView

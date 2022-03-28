@@ -21,9 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class FilmeAdapter extends ArrayAdapter<Filme> {
+public class ContatoAdapter extends ArrayAdapter<Contato> {
     private static final String TAG ="XPTO";
 
     public class Handler {
@@ -36,13 +35,13 @@ public class FilmeAdapter extends ArrayAdapter<Filme> {
     }
 
     Context ctx;
-    ArrayList<Filme> filmes;
+    ArrayList<Contato> filmes;
     int idresource;
     ISacaFotoListener lst;
     public  void setOnSacaFotoListener(ISacaFotoListener l){
         this.lst=l;
     }
-    public FilmeAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Filme> objects) {
+    public ContatoAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Contato> objects) {
         super(context, resource, objects);
         ctx = context;
         idresource = resource;
@@ -53,7 +52,7 @@ public class FilmeAdapter extends ArrayAdapter<Filme> {
     @Override
     public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
         //return super.getView(position, convertView, parent);
-        final Filme filme = filmes.get(position);
+        final Contato filme = filmes.get(position);
         Handler handler= new Handler();
         if(view ==null){
             view = LayoutInflater.from(ctx).inflate(idresource,parent,false);
@@ -97,7 +96,7 @@ public class FilmeAdapter extends ArrayAdapter<Filme> {
         handler.btdelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Filme filme= (Filme) view.getTag();
+                Contato filme= (Contato) view.getTag();
                 Log.i(TAG,filme.titulo);
                 App.filmes.remove(filme);
                 App.gravarLista();
@@ -111,7 +110,7 @@ public class FilmeAdapter extends ArrayAdapter<Filme> {
         handler.btupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Filme filme= (Filme)view.getTag();
+                Contato filme= (Contato)view.getTag();
                 Log.i(TAG,filme.titulo);
                 int id= Integer.parseInt(finalHandler.editid.getText().toString());
                 String titulo = finalHandler.edittitulo.getText().toString();

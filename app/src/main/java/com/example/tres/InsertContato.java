@@ -9,7 +9,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class InsertFilme extends AppCompatActivity {
+public class InsertContato extends AppCompatActivity {
     private static final int GETFOTO = 5;
     Button btinsert;
     EditText editid, edittitulo, editnumber;
@@ -41,12 +40,12 @@ public class InsertFilme extends AppCompatActivity {
                     String categoria= spincat.getSelectedItem().toString();
                     Drawable drw = foto.getDrawable();
                     Bitmap bmp = ((BitmapDrawable)drw).getBitmap();
-                    Filme novo = new Filme(id,titulo,number,categoria,bmp);
+                    Contato novo = new Contato(id,titulo,number,categoria,bmp);
                     App.filmes.add(novo);
                     App.gravarLista();
                     finish();
                 }catch (Exception erro){
-                    Toast.makeText(InsertFilme.this, erro.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(InsertContato.this, erro.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -54,7 +53,7 @@ public class InsertFilme extends AppCompatActivity {
         editid = findViewById(R.id.edit_id_insert);
         edittitulo= findViewById(R.id.edit_titulo_insert);
         editnumber= findViewById(R.id.edit_number_insert);
-        ArrayAdapter<CharSequence>ad = ArrayAdapter.createFromResource(InsertFilme.this,R.array.categorias,R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence>ad = ArrayAdapter.createFromResource(InsertContato.this,R.array.categorias,R.layout.support_simple_spinner_dropdown_item);
         ad.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spincat =findViewById(R.id.spinner_categoria_insert);
         spincat.setAdapter(ad);

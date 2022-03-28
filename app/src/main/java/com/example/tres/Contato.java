@@ -8,14 +8,14 @@ import android.os.Parcelable;
 import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 
-public class Filme implements Parcelable, Serializable {
+public class Contato implements Parcelable, Serializable {
     public int id;
     public String titulo;
     public String number;
     public String categoria;
     public byte[] foto;
 
-    public Filme(int id, String titulo, String number, String categoria, Bitmap bmp) {
+    public Contato(int id, String titulo, String number, String categoria, Bitmap bmp) {
         this.id = id;
         this.titulo = titulo;
         this.number = number;
@@ -23,7 +23,7 @@ public class Filme implements Parcelable, Serializable {
         this.foto = fromBitmapToArray(bmp);
     }
 
-    public Filme(int id, String titulo, String number, String categoria, byte[] f) {
+    public Contato(int id, String titulo, String number, String categoria, byte[] f) {
         this.id = id;
         this.titulo = titulo;
         this.number = number;
@@ -41,7 +41,7 @@ public class Filme implements Parcelable, Serializable {
       return   BitmapFactory.decodeByteArray(foto,0,foto.length);
     }
 
-    protected Filme(Parcel in) {
+    protected Contato(Parcel in) {
         id = in.readInt();
         titulo = in.readString();
         number = in.readString();
@@ -49,15 +49,15 @@ public class Filme implements Parcelable, Serializable {
         foto = in.createByteArray();
     }
 
-    public static final Creator<Filme> CREATOR = new Creator<Filme>() {
+    public static final Creator<Contato> CREATOR = new Creator<Contato>() {
         @Override
-        public Filme createFromParcel(Parcel in) {
-            return new Filme(in);
+        public Contato createFromParcel(Parcel in) {
+            return new Contato(in);
         }
 
         @Override
-        public Filme[] newArray(int size) {
-            return new Filme[size];
+        public Contato[] newArray(int size) {
+            return new Contato[size];
         }
     };
 

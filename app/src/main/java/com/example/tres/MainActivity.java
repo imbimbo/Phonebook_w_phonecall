@@ -19,7 +19,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
     private static final int CANALINSERT = 2 ;
     ListView lista;
-    public FilmeAdapter adpt;
+    public ContatoAdapter adpt;
     public  int posicao;
     FloatingActionButton fab;
     @Override
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lista = findViewById(R.id.list_filmes_mainactivity);
-        adpt = new FilmeAdapter(MainActivity.this, R.layout.itemfilme, App.filmes);
+        adpt = new ContatoAdapter(MainActivity.this, R.layout.itemfilme, App.filmes);
         adpt.setOnSacaFotoListener(new ISacaFotoListener() {
             @Override
             public void OnSacaFotoHandler(int pos) {
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             Uri uri =Uri.parse(data.getData().toString());
             try {
                 bmp = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-                App.filmes.get(posicao).foto=Filme.fromBitmapToArray(bmp);
+                App.filmes.get(posicao).foto= Contato.fromBitmapToArray(bmp);
                 adpt.notifyDataSetChanged();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public  void Inserir(View v){
-        Intent itinsert= new Intent(MainActivity.this, InsertFilme.class);
+        Intent itinsert= new Intent(MainActivity.this, InsertContato.class);
         startActivityForResult(itinsert,CANALINSERT);
         //Toast.makeText(MainActivity.this, "Inserir", Toast.LENGTH_SHORT).show();
     }
